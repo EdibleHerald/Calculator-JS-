@@ -79,6 +79,29 @@ if (typeof(arg) == 'number'){
 // CASE 2: OPERATION
 
 } else if(typeof(arg) == "string" && arg != "=" && arg != 'clear'){
+    // Create second variable that holds previous operation in case of 
+    // usage of two operations (e.g. 7*7/8 --> 49/8
+    // Is created after check for a second variable
+    let tempOper = oper;
+    console.log(tempOper)
+
+    displayBox.textContent += arg;
+
+
+    let text = displayBox.textContent;
+    let textArray = text.split("");
+    let mappedText = textArray.map((item)=>eachOper.includes(item));
+    let filteredText = mappedText.filter((item)=>{return item});
+
+    if(filteredText.length > 1){
+        oper = tempOper;
+        display('=');
+        console.log(filteredText)
+    }
+
+   
+
+
     switch(arg){
         // classifies operation
         case '+':
@@ -94,19 +117,7 @@ if (typeof(arg) == 'number'){
         oper = '*';
         break;
     }
-
-    displayBox.textContent += arg;
     
-    let text = displayBox.textContent;
-    let textArray = text.split("");
-    let mappedText = textArray.map((item)=>eachOper.includes(item));
-    let filteredText = mappedText.filter((item)=>{return item});
-
-    if(filteredText.length > 1){
-        display('=');
-
-    }
-
     
 
 }
@@ -116,25 +127,30 @@ if (typeof(arg) == 'number'){
 
 else if(arg == '='){
 
-    switch(oper){
-        case '+':
-            add(num1,num2);
-            break;
-        case '-':
-            subtract(num1,num2);
-            break;
-        case '/':
-            divide(num1,num2);
-            break;
-        case '*':
-            multiply(num1,num2);
-            break;
+    if(eachOper.includes(oper) && num2 != ''){
+        switch(oper){
+            case '+':
+                add(num1,num2);
+                break;
+            case '-':
+                subtract(num1,num2);
+                break;
+            case '/':
+                divide(num1,num2);
+                break;
+            case '*':
+                multiply(num1,num2);
+                break;
+        }
+        displayBox.textContent = result;
+        num1 = result;
+        num2 = '';
+        oper = '';
+        result = '';
+    }else{
+        console.log("No Operator/No second Num!")
     }
-    displayBox.textContent = result;
-    num1 = result;
-    num2 = '';
-    oper = '';
-    result = '';
+    
     
 }
 
