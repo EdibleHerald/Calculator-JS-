@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Calculator!</title>
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
     <link rel="stylesheet" href="./style.css"></link>
 </head>
 <body>
@@ -14,8 +14,27 @@
     <!-- Caculator Box -->
     <div class="body">
         <!-- Create display for calculator -->
-        <div class="display">15</div>
+        <div class="display"></div>
 
+        <!-- Buttons!!! -->
+        <div class="buttonDiv">
+            <button class="button" onclick="display(0)">0</button>
+            <button class="button" onclick="display(1)">1</button>
+            <button class="button" onclick="display(2)">2</button>
+            <button class="button" onclick="display(3)">3</button>
+            <button class="button" onclick="display(4)">4</button>
+            <button class="button" onclick="display(5)">5</button>
+            <button class="button" onclick="display(6)">6</button>
+            <button class="button" onclick="display(7)">7</button>
+            <button class="button" onclick="display(8)">8</button>
+            <button class="button" onclick="display(9)">9</button>
+            <button class="button" onclick="display('addition')">+</button>
+            <button class="button" onclick="display('subtraction')">-</button>
+            <button class="button" onclick="display('multiplication')">*</button>
+            <button class="button" onclick="display('division')">/</button>
+            <button class="button" onclick="display('equal')">=</button>
+        </div>
+        <button class="clearButton" onclick="display('clear')">Clear</button>
     </div>
 </body>
 </html>

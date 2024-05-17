@@ -34,3 +34,15 @@ function operate(num1,num2,oper){
             divide(num1,num2);
     }
 }
+
+// Create a display function which displays the chosen option
+
+function display(variable){
+if(typeof variable == 'number' ){
+    document.querySelector(".display").textContent += variable;
+} else if (variable == 'clear'){
+    document.querySelector(".display").textContent = '';
+} else{
+    document.querySelector(".display").textContent +=variable;
+}
+}
